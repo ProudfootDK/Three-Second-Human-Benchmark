@@ -12,12 +12,14 @@
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="p-3 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Can you stop the timer at exactly 3 seconds?</h1>
-                <p class="lead">The button below starts an invisible timer when pressed. The challenge is simple. Press the button again once exactly 3 seconds have elapsed. If you get within .2 seconds, you pass. Anything more or less, try again.</p><br>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button id="timerButton" type="button" onclick="startTimer()" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Start Timer</button>
-                </div><br><br>
+                <p class="lead">The button below starts an invisible timer when pressed. The challenge is simple. Press the button again once exactly 3 seconds have elapsed. If you get within .2 seconds, you pass. Anything more or less, try again.</p>
+                <div class="mt-5 d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <button id="timerButton" type="button" onclick="timerClicked()" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Start</button>
+                </div>
+                <div class="mb-5 d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <p id="score" class="lead">Your score is:</p>
+                </div>
                 <div class="d-grid gap-2 justify-content-md-start mb-4 mb-lg-3">
-                    <!--<p class="lead">Click to view your attempt history</p>-->
                     <button id="historyButton" type="button" class="btn btn-outline-secondary btn-lg px-4">History</button>
                 </div>
             </div>
@@ -27,5 +29,31 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+    const timerTarget = 3000; //Set timerTarget to 3000ms. All date objects will be quantified in milliseconds for simplicity.
+    let startTime = new Date();
+    let elapsedTime = null;
+    let isTimerActive = false;
+
+    function timerClicked() {
+        if (isTimerActive === false) { //start timer
+            startTime = new Date();
+
+            document.querySelector('#score').textContent = "Your score is:"; //hides previous score
+            document.querySelector('#timerButton').textContent = "Stop";
+
+            isTimerActive = true;
+        }
+        else { //stop timer and record time elapsed
+            elapsedTime = new Date() - startTime;
+            let score = timerTarget - elapsedTime;
+
+            document.querySelector('#score').textContent = `The timer ran for ${elapsedTime} ms. Your Score is ${score}`;
+            document.querySelector('#timerButton').textContent = "Start";
+
+            isTimerActive = false;
+        }
+    }
+</script>
 
 </html>
