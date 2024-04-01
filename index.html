@@ -48,7 +48,10 @@
             elapsedTime = new Date() - startTime;
             let score = timerTarget - elapsedTime;
 
-            document.querySelector('#score').textContent = `The timer ran for ${elapsedTime} ms. Your Score is ${score}`;
+            elapsedTime = elapsedTime / 1000;
+            score = score / 1000;
+
+            document.querySelector('#score').textContent = `The timer ran for ${elapsedTime} seconds. Your Score is ${score}`;
             document.querySelector('#timerButton').textContent = "Start";
 
             isTimerActive = false;
