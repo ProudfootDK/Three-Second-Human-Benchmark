@@ -32,7 +32,6 @@
 <script type="text/javascript">
     const timerTarget = 3000; //Set timerTarget to 3000ms. All date objects will be quantified in milliseconds for simplicity.
     let startTime = new Date();
-    let elapsedTime = null;
     let isTimerActive = false;
 
     function timerClicked() {
@@ -45,17 +44,23 @@
             isTimerActive = true;
         }
         else { //stop timer and record time elapsed
-            elapsedTime = new Date() - startTime;
+            let elapsedTime = new Date() - startTime;
             let score = timerTarget - elapsedTime;
 
-            elapsedTime = elapsedTime / 1000;
-            score = score / 1000;
-
-            document.querySelector('#score').textContent = `The timer ran for ${elapsedTime} seconds. Your Score is ${score}`;
-            document.querySelector('#timerButton').textContent = "Start";
+            printScore(elapsedTime);
 
             isTimerActive = false;
         }
+    }
+
+    function printScore(elapsedTime) {
+        let score = timerTarget - elapsedTime;
+
+        elapsedTime = elapsedTime / 1000;
+        score = score / 1000;
+
+        document.querySelector('#score').textContent = `The timer ran for ${elapsedTime} seconds. Your Score is ${score}`;
+        document.querySelector('#timerButton').textContent = "Start";
     }
 </script>
 
