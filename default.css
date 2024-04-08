@@ -1,0 +1,84 @@
+:root {
+    --score-color: #ffcccb;
+}
+.scoreColor {
+    background-color: var(--score-color);
+}
+
+
+
+#stop_watch_container {
+    height: 200px;
+    width: 400px;
+    border-radius: 200px 200px 0 0;
+    background-image: conic-gradient(from -90deg at 50% 100%, yellow 0deg 54deg, blue 54deg 84deg, green 84deg 96deg, blue 96deg 126deg, yellow 126deg 180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scoreVisualizerParent {
+    height: 400px;
+    width: 400px;
+    background-color: #6c757d;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.scoreVisualizerChild {
+    height: 50%;
+    width: 50%;
+    background-color: var(--score-color);
+    border-radius: 50%;
+    display: inline-block;
+    clip-path: circle(25%);
+    transition: clip-path 1s;
+}
+
+scoreVisualizerParent:hover .scoreVisualizerChild {
+    animation: wipe-clockwise 1s ease-in forwards;
+}
+
+.scoreVisualizerParent:hover .scoreVisualizerChild {
+    clip-path: circle(20px);
+}
+
+
+
+@keyframes wipe-clockwise {
+    0% {
+        transform: translateX(0);
+    }
+
+    33% {
+        transform: translateY(100%);
+    }
+
+    66% {
+        transform: translateX(100%) translateY(100%);
+
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
