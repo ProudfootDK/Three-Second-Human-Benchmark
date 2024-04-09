@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 justify-content-md-start mb-4 mb-lg-3">
-                    <button id="historyButton" type="button" class="btn btn-outline-secondary btn-lg px-4">History</button>
+                    <button id="historyButton" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="displaySavedScores()">History</button>
                     <table id="saved_scores_table" class="table">
                         <thead class="table-dark">
                             <tr>
@@ -86,7 +86,6 @@
         savedScoresArray.push(elapsedTime);
     }
 
-    function printSavedScores() {
         for (let i=0; i < savedScoresArray.length; i++) {
 
         }
