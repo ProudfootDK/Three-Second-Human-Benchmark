@@ -93,7 +93,10 @@
             scoreColor = "#ff595e"
         }
 
-        document.querySelector(':root').style.setProperty('--score-color', scoreColor)
+        //document.querySelector(':root').style.setProperty('--score-color', scoreColor)
+        //This doesn't work with github pages due to some technicality regarding css variables I haven't been able to pinpoint.
+        //I am setting the style directly inline as a temporary fix.
+        document.querySelector('#score').style.backgroundColor = scoreColor;
         document.querySelector('#score').textContent = elapsedTime + " s";
         document.querySelector('#timerButton').textContent = "Start";
 
