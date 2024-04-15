@@ -151,9 +151,11 @@
     function displaySavedScores() {
         if (document.querySelector('#history_container').style.display === "block") {
             document.querySelector('#history_container').style.display = 'none';
+            document.querySelector('#historyButton').textContent = "Show History";
         }
         else {
             document.querySelector('#history_container').style.display = 'block';
+            document.querySelector('#historyButton').textContent = "Hide History";
             printSavedScores();
         }
     }
